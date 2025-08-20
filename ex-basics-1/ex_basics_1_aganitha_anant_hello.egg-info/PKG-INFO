@@ -1,0 +1,21 @@
+Metadata-Version: 2.4
+Name: ex-basics-1-aganitha-anant-hello
+Version: 0.2.0
+Summary: Add your description here
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: typer>=0.16.1
+
+Module published: https://test.pypi.org/project/ex-basics-1-aganitha-anant-hello/
+
+
+`from ex-basics-1-aganitha-anant-hello import hello
+`
+`print(hello()) # output "Hello world"
+``print(hello.main("Anant")) # output "Hello Anant"
+`
+
+Project Details
+Version: 0.1.0
+
+Author: Anant Chaudhary
