@@ -1,0 +1,10 @@
+[project]
+name = "bootcamp"
+version = "1.0.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+hello = "bootcamp.cli:hello"
