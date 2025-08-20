@@ -1,8 +1,0 @@
-README.md
-main.py
-pyproject.toml
-ex_basics_1_aganitha_anant_hello.egg-info/PKG-INFO
-ex_basics_1_aganitha_anant_hello.egg-info/SOURCES.txt
-ex_basics_1_aganitha_anant_hello.egg-info/dependency_links.txt
-ex_basics_1_aganitha_anant_hello.egg-info/entry_points.txt
-ex_basics_1_aganitha_anant_hello.egg-info/top_level.txt
