@@ -1,21 +1,27 @@
 Metadata-Version: 2.4
 Name: ex-basics-1-aganitha-anant-hello
-Version: 0.2.0
+Version: 1.0.1
 Summary: Add your description here
 Requires-Python: >=3.11
 Description-Content-Type: text/markdown
-Requires-Dist: typer>=0.16.1
 
-Module published: https://test.pypi.org/project/ex-basics-1-aganitha-anant-hello/
+## Module published: https://test.pypi.org/project/ex-basics-1-aganitha-anant-hello/
 
 
-`from ex-basics-1-aganitha-anant-hello import hello
-`
-`print(hello()) # output "Hello world"
-``print(hello.main("Anant")) # output "Hello Anant"
-`
+### Create Virtual Env
+`python -m venv myenv`
+`source myenv/bin/activate`
+`pip install -i https://test.pypi.org/simple/ ex-basics-1-aganitha-anant-hello==1.0.1`
+#### Run:
+`say_hello`
+#### Output:
+Hello world
+#### Run:
+`say_hello Anant`
+#### Output:
+Hello Anant
 
 Project Details
-Version: 0.1.0
+Version: 1.0.1
 
 Author: Anant Chaudhary

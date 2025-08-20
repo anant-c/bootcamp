@@ -1,7 +1,15 @@
 [project]
-name = "ex-basics-2"
-version = "0.1.0"
+name = "ex-basics-1-aganitha-anant-hello"
+version = "2.0.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "rich>=14.1.0",
+]
+
+[project.scripts]
+say_hello =
+
+[tool.uv]
+publish-url = "https://test.pypi.org/legacy/"

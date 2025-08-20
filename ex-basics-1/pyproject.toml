@@ -1,12 +1,14 @@
 [project]
 name = "ex-basics-1-aganitha-anant-hello"
-version = "0.2.0"
+version = "1.0.1"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "typer>=0.16.1",
 ]
+
+[project.scripts]
+say_hello = "main:main"
 
 [tool.uv]
 publish-url = "https://test.pypi.org/legacy/"

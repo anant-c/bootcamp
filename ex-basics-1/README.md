@@ -1,13 +1,20 @@
-Module published: https://test.pypi.org/project/ex-basics-1-aganitha-anant-hello/
+## Module published: https://test.pypi.org/project/ex-basics-1-aganitha-anant-hello/
 
 
-`import ex-basics-1-aganitha-anant-hello
-`
-`print(ex-basics-1-aganitha-anant-hello()) # output "Hello world"
-``print(ex-basics-1-aganitha-anant-hello("Anant")) # output "Hello Anant"
-`
+### Create Virtual Env
+`python -m venv myenv`
+`source myenv/bin/activate`
+`pip install -i https://test.pypi.org/simple/ ex-basics-1-aganitha-anant-hello==1.0.1`
+#### Run:
+`say_hello`
+#### Output:
+Hello world
+#### Run:
+`say_hello Anant`
+#### Output:
+Hello Anant
 
 Project Details
-Version: 0.2.0
+Version: 1.0.1
 
 Author: Anant Chaudhary
