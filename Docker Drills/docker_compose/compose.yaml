@@ -6,16 +6,9 @@ services:
         - "8888:80"
     volumes:
       - ./webPage:/usr/share/nginx/html:ro
-    networks:
-      - common_net
 
   ubuntu:
     image: ubuntu:22.04
     container_name: anant_ubuntu
-    command: sleep infinity
-    networks:
-      - common_net
-
-networks:
-  common_net:
-    driver: bridge
+    command: /bin/bash -c "apt-get update && apt-get install -y curl && sleep infinity"
+   
