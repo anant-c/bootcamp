@@ -1,21 +1,13 @@
 services:
-  nginx:
+  web:
     image: nginx:1.29
     container_name: anant_nginxx
-    ports: 
-        - "8888:80"
+    ports:
+      - "8888:80"
     volumes:
       - ./webPage:/usr/share/nginx/html:ro
-    networks:
-      - common_net
-
-  ubuntu:
+  myalpine:
     image: ubuntu:22.04
     container_name: anant_ubuntu
     command: sleep infinity
-    networks:
-      - common_net
-
-networks:
-  common_net:
-    driver: bridge
+    tty: true
