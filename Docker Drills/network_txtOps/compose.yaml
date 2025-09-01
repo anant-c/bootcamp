@@ -12,11 +12,15 @@ services:
   ubuntu:
     image: ubuntu:22.04
     container_name: anant_ubuntu
+    volumes: 
+            - ./saved_html:/saved_html
     command: >
-      sh -c "apt update && 
-             apt install -y curl &&
-             curl http://nginx/index.html -o /index_saved.txt && cat index_saved.txt &&
-             tail -f /dev/null"
+      sh -c "apt-get update && 
+             apt-get install -y curl &&
+             curl http://nginx/index.html -o /saved_html/index_saved.txt && cat /saved_html/index_saved.txt &&
+             sleep 30 && exit 0"
+    depends_on:
+      - nginx
 
     networks:
       - common_net
@@ -24,3 +28,4 @@ services:
 networks:
   common_net:
     driver: bridge
+
