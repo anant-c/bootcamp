@@ -1,0 +1,26 @@
+services:
+  nginx:
+    image: nginx:1.29
+    container_name: anant_nginxx
+    ports:
+        - "8888:80"
+    volumes:
+      - ./webPage:/usr/share/nginx/html:ro
+    networks:
+      - common_net
+
+  ubuntu:
+    image: ubuntu:22.04
+    container_name: anant_ubuntu
+    command: >
+      sh -c "apt update && 
+             apt install -y curl &&
+             curl http://nginx/index.html -o /index_saved.txt && cat index_saved.txt &&
+             tail -f /dev/null"
+
+    networks:
+      - common_net
+
+networks:
+  common_net:
+    driver: bridge
