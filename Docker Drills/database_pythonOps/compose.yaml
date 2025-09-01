@@ -1,0 +1,30 @@
+services:
+  postgres-db:
+    image: postgres:17-bookworm
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: mydatabase
+    ports:
+      - 5432:5432
+    networks:
+      - app-network
+
+  python-app:
+   image: astral/uv:python3.12-bookworm
+   ports:
+     - 8000:8000
+   networks:
+     - app-network
+   working_dir: /app
+   volumes:
+     - ./app:/app
+   depends_on:
+     - postgres-db
+   command: uv run --env-file .env fastapi dev --host 0.0.0.0
+
+
+networks:
+  app-network:
+    driver: bridge
