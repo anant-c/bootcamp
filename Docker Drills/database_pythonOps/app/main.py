@@ -1,45 +1,31 @@
-from fastapi import FastAPI, HTTPException
-from conf.db import get_db
-from schemas.user_schema import UserSchema
-from models.db_models import User_Try
-
+from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
+from .conf.db import get_db, Base, engine
+from .schemas.user_schema import UserSchema
+from .models.db_models import User_Try
 
+# Create all tables on application startup
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
+# Your CORS middleware...
 
-origins = [
-    "http://localhost:5173",
-    "http://localhost:8080",
-    "*"
-]
+@app.get("/get-users", response_model=list[UserSchema])
+def read_root(db: Session = Depends(get_db)):
+    users = db.query(User_Try).all()
+    if not users:
+        raise HTTPException(status_code=404, detail="Users not found.")
+    return users
 
-@app.get("/get-users")
-def read_root(db:Session):
-    user = db.query(User_Try).all()
-
-    if not user:
-        raise HTTPException(status_code=404, detail=f"Users not found.")
-
-    return {
-        "message": "Users fetched successfully.",
-        "users": user
-    }    
-
-@app.post("/post-user")
-def post_user(db: Session, user: UserSchema):
+@app.post("/post-user", response_model=UserSchema)
+def post_user(user: UserSchema, db: Session = Depends(get_db)):
     new_user = User_Try(
-        name = user.name,
-        email = user.email,
-        age = user.age
+        name=user.name,
+        email=user.email,
+        age=user.age
     )
-
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
-
-    return {
-        "message": "User created successfully",
-        "user_id": str(new_user.id)
-    }
+    return new_user

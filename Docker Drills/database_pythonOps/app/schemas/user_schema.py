@@ -1,6 +1,6 @@
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr
 
 class UserSchema(BaseModel):
     name: str
-    email: EmailStr
-    age : int
+    email: str
+    age: int
