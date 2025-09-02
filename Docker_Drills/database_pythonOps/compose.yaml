@@ -13,6 +13,7 @@ services:
 
   python-app:
    image: astral/uv:python3.12-bookworm
+   container_name: python-backend
    ports:
      - 8000:8000
    networks:
