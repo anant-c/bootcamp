@@ -1,0 +1,13 @@
+services:
+  python-app:
+   image: astral/uv:python3.12-bookworm
+   container_name: python-backend
+   ports:
+     - 8000:8000
+   working_dir: /docker_project/level_one/app
+   volumes:
+     - ./app:/docker_project/level_one/app
+   command: uv run fastapi dev --host 0.0.0.0
+
+
+
