@@ -1,0 +1,51 @@
+name: Build and Push Level Three Docker Image
+
+on:
+  push:
+    branches:
+      - main
+    # Crucially, ONLY run if files were changed within this specific path.
+    paths:
+      - 'projects/docker_project/level_three/**'
+
+jobs:
+  build-and-push:
+    # runner
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the repository's code.
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      # Step 2: Log in to Docker Hub using the secrets we created.
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      # Step 3: Set up Docker Buildx for more efficient builds.
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # Step 4: Extract the short Git commit hash to use as a unique image tag.
+      - name: Extract Git commit hash
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      # Step 5: Build the Docker image and push it to Docker Hub.
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          # The context is the directory containing the Dockerfile and source code.
+          context: ./projects/docker_project/level_three
+          # The path to the Dockerfile itself.
+          file: ./projects/docker_project/level_three/Dockerfile
+          # We want to push the image after building.
+          push: true
+          # Define the tags for the image.
+          # We create two: one with the unique commit hash and one with 'latest'.
+          tags: |
+            ${{ secrets.DOCKERHUB_USERNAME }}/docker_level_three:${{ steps.vars.outputs.sha_short }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/docker_level_three:latest
