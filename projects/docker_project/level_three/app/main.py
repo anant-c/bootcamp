@@ -42,5 +42,5 @@ def get_item(key: FetchKeySchema):
         raise HTTPException(status_code=404, detail="Item not found")
     return {"key": key, "value": value}
 
-
+# testing the CI/CD workflow
 # this is a syntax error
