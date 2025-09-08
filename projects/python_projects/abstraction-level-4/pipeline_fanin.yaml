@@ -1,0 +1,10 @@
+pipeline:
+  - type: processors.counter.LineCounter
+    config:
+      start: 1
+      fmt: "[{n}] {line}"
+  - type: processors.fan_in.PairJoiner
+    config:
+      join_every: 2
+      sep: " | "
+      emit_remainder: true
