@@ -1,0 +1,12 @@
+[project]
+name = "abstraction-level-2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dotenv>=0.9.9",
+    "pathlib>=1.0.1",
+    "typer>=0.17.4",
+    "typing>=3.10.0.0",
+]
