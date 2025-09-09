@@ -1,4 +1,3 @@
-# core.py
 from typing import Iterator, List, Callable
 from types_processor import StreamProcessor
 
